@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "QNn1kvp7zEHp0hEUpnH912OZEK9ZJH7ot3VEXWkOMsw=",
+  "Source": "StatisticsService.Api",
+  "BasePath": "_content/StatisticsService.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
