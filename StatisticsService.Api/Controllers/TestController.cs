@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using StatisticsService.Infrastructure;
+using StatisticsService.Infrastructure.Dto;
+using StatisticsService.Infrastructure.Repositories.Interfaces;
 
 namespace StatisticsService.Controllers;
 
@@ -6,9 +9,16 @@ namespace StatisticsService.Controllers;
 [Route("[controller]")]
 public class TestController : ControllerBase
 {
-    [HttpOptions]
-    public string Test()
+    private readonly ITransactionRepository transactionRepository;
+
+    public TestController(ITransactionRepository transactionRepository)
     {
-        return "this is test";
+        this.transactionRepository = transactionRepository;
+    }
+
+    [HttpOptions]
+    public async Task<IEnumerable<TransactionDto>> Test()
+    {
+        return await transactionRepository.GetTransactions();
     }
 }

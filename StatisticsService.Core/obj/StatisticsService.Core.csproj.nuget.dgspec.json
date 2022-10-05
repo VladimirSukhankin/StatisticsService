@@ -1,0 +1,72 @@
+{
+  "format": 1,
+  "restore": {
+    "F:\\code\\StatisticsService\\StatisticsService.Core\\StatisticsService.Core.csproj": {}
+  },
+  "projects": {
+    "F:\\code\\StatisticsService\\StatisticsService.Core\\StatisticsService.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\code\\StatisticsService\\StatisticsService.Core\\StatisticsService.Core.csproj",
+        "projectName": "StatisticsService.Core",
+        "projectPath": "F:\\code\\StatisticsService\\StatisticsService.Core\\StatisticsService.Core.csproj",
+        "packagesPath": "C:\\Users\\Family\\.nuget\\packages\\",
+        "outputPath": "F:\\code\\StatisticsService\\StatisticsService.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Family\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.telerik.com/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "ClickHouse.Net": {
+              "target": "Package",
+              "version": "[0.5.1, )"
+            },
+            "Microsoft.Extensions.Options": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

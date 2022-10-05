@@ -6,32 +6,93 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9d1605b-1240-4118-b5ed-c857ef73347b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/StatisticsService.Api/Controllers/TestController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StatisticsService.Api/bin/Debug/net6.0/Microsoft.OpenApi.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StatisticsService.Api/bin/Debug/net6.0/StatisticsService.Api.deps.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StatisticsService.Api/bin/Debug/net6.0/StatisticsService.Api.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StatisticsService.Api/bin/Debug/net6.0/StatisticsService.Api.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StatisticsService.Api/bin/Debug/net6.0/StatisticsService.Api.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StatisticsService.Api/bin/Debug/net6.0/StatisticsService.Api.runtimeconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StatisticsService.Api/bin/Debug/net6.0/Swashbuckle.AspNetCore.Swagger.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StatisticsService.Api/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StatisticsService.Api/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StatisticsService.Api/bin/Debug/net6.0/appsettings.Development.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StatisticsService.Api/bin/Debug/net6.0/appsettings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StatisticsService.Api/obj/Debug/net6.0/StatisticsService.Api.MvcApplicationPartsAssemblyInfo.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StatisticsService.Api/obj/Debug/net6.0/StatisticsService.Api.MvcApplicationPartsAssemblyInfo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StatisticsService.Api/obj/Debug/net6.0/StatisticsService.Api.csproj.CopyComplete" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StatisticsService.Api/obj/Debug/net6.0/StatisticsService.Api.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StatisticsService.Api/obj/Debug/net6.0/StatisticsService.Api.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StatisticsService.Api/obj/Debug/net6.0/StatisticsService.Api.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StatisticsService.Api/obj/Debug/net6.0/StatisticsService.Api.genruntimeconfig.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StatisticsService.Api/obj/Debug/net6.0/StatisticsService.Api.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StatisticsService.Api/obj/Debug/net6.0/apphost.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StatisticsService.Api/obj/Debug/net6.0/ref/StatisticsService.Api.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StatisticsService.Api/obj/Debug/net6.0/refint/StatisticsService.Api.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StatisticsService.Api/obj/Debug/net6.0/staticwebassets.build.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StatisticsService.Api/obj/staticwebassets.pack.sentinel" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StatisticsService.sln.DotSettings.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Api/bin/Debug/net6.0/StatisticsService.Core.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Api/bin/Debug/net6.0/StatisticsService.Core.pdb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Api/bin/Debug/net6.0/StatisticsService.Infrastructure.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Api/bin/Debug/net6.0/StatisticsService.Infrastructure.pdb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Core/Settings/DataBaseSettings.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Core/StatisticsService.Core.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Core/bin/Debug/net6.0/StatisticsService.Core.deps.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Core/bin/Debug/net6.0/StatisticsService.Core.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Core/bin/Debug/net6.0/StatisticsService.Core.pdb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Core/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Core/obj/Debug/net6.0/StatisticsService.Core.AssemblyInfo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Core/obj/Debug/net6.0/StatisticsService.Core.AssemblyInfoInputs.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Core/obj/Debug/net6.0/StatisticsService.Core.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Core/obj/Debug/net6.0/StatisticsService.Core.GlobalUsings.g.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Core/obj/Debug/net6.0/StatisticsService.Core.assets.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Core/obj/Debug/net6.0/StatisticsService.Core.csproj.AssemblyReference.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Core/obj/Debug/net6.0/StatisticsService.Core.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Core/obj/Debug/net6.0/StatisticsService.Core.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Core/obj/Debug/net6.0/StatisticsService.Core.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Core/obj/Debug/net6.0/StatisticsService.Core.pdb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Core/obj/Debug/net6.0/ref/StatisticsService.Core.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Core/obj/Debug/net6.0/refint/StatisticsService.Core.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Core/obj/StatisticsService.Core.csproj.nuget.dgspec.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Core/obj/StatisticsService.Core.csproj.nuget.g.props" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Core/obj/StatisticsService.Core.csproj.nuget.g.targets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Core/obj/project.assets.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Core/obj/project.nuget.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Core/obj/project.packagespec.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Core/obj/rider.project.restore.info" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Domain/Entities/Transaction.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Infrastructure/Repositories/Common/TransactionRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Infrastructure/Repositories/Interfaces/ITransactionRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Infrastructure/bin/Debug/net6.0/StatisticsService.Core.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Infrastructure/bin/Debug/net6.0/StatisticsService.Core.pdb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Infrastructure/bin/Debug/net6.0/StatisticsService.Infrastructure.deps.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Infrastructure/bin/Debug/net6.0/StatisticsService.Infrastructure.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Infrastructure/bin/Debug/net6.0/StatisticsService.Infrastructure.pdb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Infrastructure/obj/Debug/net6.0/StatisticsService.Infrastructure.csproj.CopyComplete" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Infrastructure/obj/Debug/net6.0/StatisticsService.Infrastructure.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Infrastructure/obj/Debug/net6.0/StatisticsService.Infrastructure.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Infrastructure/obj/Debug/net6.0/StatisticsService.Infrastructure.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Infrastructure/obj/Debug/net6.0/StatisticsService.Infrastructure.pdb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Infrastructure/obj/Debug/net6.0/ref/StatisticsService.Infrastructure.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StatisticsService.Infrastructure/obj/Debug/net6.0/refint/StatisticsService.Infrastructure.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.StatisticsService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.StatisticsService/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Api/Controllers/TestController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Api/Controllers/TestController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Api/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Api/StatisticsService.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Api/StatisticsService.Api.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Api/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Api/appsettings.Development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Api/bin/Debug/net6.0/StatisticsService.Api.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Api/bin/Debug/net6.0/StatisticsService.Api.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Api/bin/Debug/net6.0/StatisticsService.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Api/bin/Debug/net6.0/StatisticsService.Api.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Api/bin/Debug/net6.0/StatisticsService.Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Api/bin/Debug/net6.0/StatisticsService.Api.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Api/bin/Debug/net6.0/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Api/bin/Debug/net6.0/appsettings.Development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Api/obj/Debug/net6.0/StatisticsService.Api.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Api/obj/Debug/net6.0/StatisticsService.Api.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Api/obj/Debug/net6.0/StatisticsService.Api.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Api/obj/Debug/net6.0/StatisticsService.Api.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Api/obj/Debug/net6.0/StatisticsService.Api.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Api/obj/Debug/net6.0/StatisticsService.Api.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Api/obj/Debug/net6.0/StatisticsService.Api.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Api/obj/Debug/net6.0/StatisticsService.Api.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Api/obj/Debug/net6.0/StatisticsService.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Api/obj/Debug/net6.0/StatisticsService.Api.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Api/obj/Debug/net6.0/StatisticsService.Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Api/obj/Debug/net6.0/StatisticsService.Api.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Api/obj/Debug/net6.0/ref/StatisticsService.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Api/obj/Debug/net6.0/ref/StatisticsService.Api.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Api/obj/Debug/net6.0/refint/StatisticsService.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Api/obj/Debug/net6.0/refint/StatisticsService.Api.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Api/obj/StatisticsService.Api.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Api/obj/StatisticsService.Api.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Api/obj/StatisticsService.Api.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Api/obj/StatisticsService.Api.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Api/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Api/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Api/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Api/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Api/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Api/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Api/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Api/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Api/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Api/obj/staticwebassets.pack.sentinel" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Domain/StatisticsService.Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Domain/StatisticsService.Domain.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Domain/obj/Debug/net6.0/StatisticsService.Domain.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Domain/obj/Debug/net6.0/StatisticsService.Domain.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Domain/obj/Debug/net6.0/StatisticsService.Domain.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Domain/obj/Debug/net6.0/StatisticsService.Domain.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Domain/obj/StatisticsService.Domain.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Domain/obj/StatisticsService.Domain.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Domain/obj/StatisticsService.Domain.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Domain/obj/StatisticsService.Domain.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Domain/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Domain/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Domain/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Domain/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Domain/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Domain/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Domain/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Domain/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Infrastructure/StatisticsService.Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Infrastructure/StatisticsService.Infrastructure.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Infrastructure/obj/Debug/net6.0/StatisticsService.Infrastructure.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Infrastructure/obj/Debug/net6.0/StatisticsService.Infrastructure.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Infrastructure/obj/Debug/net6.0/StatisticsService.Infrastructure.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Infrastructure/obj/Debug/net6.0/StatisticsService.Infrastructure.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Infrastructure/obj/StatisticsService.Infrastructure.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Infrastructure/obj/StatisticsService.Infrastructure.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Infrastructure/obj/StatisticsService.Infrastructure.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Infrastructure/obj/StatisticsService.Infrastructure.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Infrastructure/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Infrastructure/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Infrastructure/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Infrastructure/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Infrastructure/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Infrastructure/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.Infrastructure/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.Infrastructure/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StatisticsService.sln" beforeDir="false" afterPath="$PROJECT_DIR$/StatisticsService.sln" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,13 +102,40 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="feature/init" />
       </map>
     </option>
   </component>
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="master" />
+        <option value="develop" />
+      </list>
+    </option>
+  </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2ca92c16e282412da28fd6ebdf70f2c06200/72/8b320e63/DefaultPropertyBinder.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2ca92c16e282412da28fd6ebdf70f2c06200/b6/5e4f2feb/ClickHouseDatabase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2ca92c16e282412da28fd6ebdf70f2c06200/c8/90973c14/ServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2ca92c16e282412da28fd6ebdf70f2c06200/f0/6dbe9060/IClickHouseDatabase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4563b2e63b294eccb8c2fb9bed941f8e14200/2b/51ccc4c0/ClickHouseDbContextOptionsBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7a06001e9dfc4ec3a1d0a0d0f606ea131b400/aa/94a496cf/ProtocolFormatter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ca30eefb7e1d4ac79d52f28d99f8054c361798/34/6d010052/IDbCommand.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/0b5567882521e02aa3d40a7bce81b7235ccac4db588866e3498e614c3bc/CastHelpers.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3f13d6e72b98d8df689bdf6f96e785c26253f95a5e49ee8a54587b412f0ec/HttpHeaders.Generated.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/575c31ecc35a636b6f962cb71d53992552941a18982aae1c8e6c16305cc3761b/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/685375de32fa2adf315b38f6d22782547cd9795e6d4d109e94522c8b6cc446c0/DeveloperExceptionPageMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/76c0e4122422fa498e2c6d284ca4ce48027c1d21d7b596dc50cbd9baa05b49/SwaggerBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/80fad1abc6a0b19dbe738ff7fdc6d92da5bf128839240743dd9c1d3e274cf/SwaggerMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8b17eea7411eb1ee7e80413e8229dc445ba073ab591c18196db8b55712aabb/ControllerFactoryProvider.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9d4f4ac7db6d2c5d183ab2d92602280ed4349fd6e6a1b6313546b3d01fdab5/ServiceProvider.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a3ea6d04a1838a34f1364f1464e69e99d1c2f4f99b401afb55ab328b28fa3/Transaction.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d5f92893b4e362502fc4e02cf758f9ed02fdab36fa5d36b75d31416bdb3596/ControllerEndpointRouteBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d9d9faea5e6ed6438a777ef8c6eed41261f81d8e86488ed923ad92564f54e/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e8d3bcb75657e1215392dfd276529f3c965e923e468ed653f863cdffe755472/HttpProtocol.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/code/StatisticsService/StatisticsService.Api/Controllers/TestController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/StatisticsService.Core/Settings/DataBaseSettings.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -60,16 +148,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "settings.editor.selected.configurable": "editing.templates",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;database.data.extractors.current.export.id&quot;: &quot;SQL Inserts&quot;,
+    &quot;database.data.extractors.current.id&quot;: &quot;SQL Inserts&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;RiderNuGetOptionsPageId&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;clickhouse&quot;
+    ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.StatisticsService">
     <configuration name="StatisticsService" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/StatisticsService.Api/StatisticsService.Api.csproj" />
@@ -110,7 +205,14 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1660633413208</updated>
-      <workItem from="1660633421011" duration="1586000" />
+      <workItem from="1660633421011" duration="10100000" />
+      <workItem from="1663954383431" duration="3699000" />
+      <workItem from="1664261139234" duration="1707000" />
+      <workItem from="1664264603540" duration="259000" />
+      <workItem from="1664265123799" duration="8593000" />
+      <workItem from="1664733184526" duration="2148000" />
+      <workItem from="1664790037120" duration="990000" />
+      <workItem from="1664990672602" duration="8242000" />
     </task>
     <servers />
   </component>
@@ -133,6 +235,64 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/StatisticsService.Api/Controllers/TestController.cs</url>
+          <line>19</line>
+          <properties documentPath="F:\code\StatisticsService\StatisticsService.Api\Controllers\TestController.cs" initialLine="19" containingFunctionPresentation="method 'Test'">
+            <startOffsets>
+              <option value="526" />
+            </startOffsets>
+            <endOffsets>
+              <option value="533" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/StatisticsService.Infrastructure/Repositories/Common/TransactionRepository.cs</url>
+          <line>12</line>
+          <properties documentPath="F:\code\StatisticsService\StatisticsService.Infrastructure\Repositories\Common\TransactionRepository.cs" initialLine="13" containingFunctionPresentation="constructor 'TransactionRepository'">
+            <startOffsets>
+              <option value="388" />
+            </startOffsets>
+            <endOffsets>
+              <option value="408" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/StatisticsService.Core/Context/ApplicationContext.cs</url>
+          <line>14</line>
+          <properties documentPath="F:\code\StatisticsService\StatisticsService.Core\Context\ApplicationContext.cs" initialLine="14" containingFunctionPresentation="constructor 'ApplicationContext'">
+            <startOffsets>
+              <option value="442" />
+            </startOffsets>
+            <endOffsets>
+              <option value="485" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/StatisticsService.Infrastructure/Repositories/Common/TransactionRepository.cs</url>
+          <line>24</line>
+          <properties documentPath="F:\code\StatisticsService\StatisticsService.Infrastructure\Repositories\Common\TransactionRepository.cs" initialLine="24" containingFunctionPresentation="method 'GetTransactions'">
+            <startOffsets>
+              <option value="600" />
+            </startOffsets>
+            <endOffsets>
+              <option value="616" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
