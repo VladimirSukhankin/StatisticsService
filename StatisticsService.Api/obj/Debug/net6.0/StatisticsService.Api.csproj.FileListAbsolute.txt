@@ -25,3 +25,16 @@ F:\code\StatisticsService\StatisticsService.Api\obj\Debug\net6.0\refint\Statisti
 F:\code\StatisticsService\StatisticsService.Api\obj\Debug\net6.0\StatisticsService.Api.pdb
 F:\code\StatisticsService\StatisticsService.Api\obj\Debug\net6.0\StatisticsService.Api.genruntimeconfig.cache
 F:\code\StatisticsService\StatisticsService.Api\obj\Debug\net6.0\ref\StatisticsService.Api.dll
+F:\code\StatisticsService\StatisticsService.Api\bin\Debug\net6.0\ClickHouse.Ado.dll
+F:\code\StatisticsService\StatisticsService.Api\bin\Debug\net6.0\ClickHouse.Net.dll
+F:\code\StatisticsService\StatisticsService.Api\bin\Debug\net6.0\LZ4.dll
+F:\code\StatisticsService\StatisticsService.Api\bin\Debug\net6.0\LZ4pn.dll
+F:\code\StatisticsService\StatisticsService.Api\bin\Debug\net6.0\StatisticsService.Core.dll
+F:\code\StatisticsService\StatisticsService.Api\bin\Debug\net6.0\StatisticsService.Infrastructure.dll
+F:\code\StatisticsService\StatisticsService.Api\bin\Debug\net6.0\StatisticsService.Core.pdb
+F:\code\StatisticsService\StatisticsService.Api\bin\Debug\net6.0\StatisticsService.Infrastructure.pdb
+F:\code\StatisticsService\StatisticsService.Api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+F:\code\StatisticsService\StatisticsService.Api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+F:\code\StatisticsService\StatisticsService.Api\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+F:\code\StatisticsService\StatisticsService.Api\bin\Debug\net6.0\StatisticsService.Domain.dll
+F:\code\StatisticsService\StatisticsService.Api\bin\Debug\net6.0\StatisticsService.Domain.pdb

@@ -1,11 +1,30 @@
+using ClickHouse.Ado;
+using ClickHouse.Net;
+using StatisticsService.Core.Settings;
+using StatisticsService.Infrastructure.Repositories.Common;
+using StatisticsService.Infrastructure.Repositories.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddClickHouse();
+builder.Services.Configure<DataBaseSettings>(
+    builder.Configuration.GetSection("DataBaseSettings"));
+
+var dataBaseSettings = builder.Configuration.GetSection("DataBaseSettings").Get<DataBaseSettings>();
+
+builder.Services.AddClickHouse();
+builder.Services.AddTransient(_ => new ClickHouseConnectionSettings(
+    $"Host={dataBaseSettings.Host};Port={dataBaseSettings.Port};User={dataBaseSettings.User};" +
+    $"Password={dataBaseSettings.Password};Database={dataBaseSettings.Database};Compress={dataBaseSettings.Compress};" +
+    $"CheckCompressedHash={dataBaseSettings.CheckCompressedHash};SocketTimeout={dataBaseSettings.SocketTimeout};" +
+    $"Compressor={dataBaseSettings.Compressor}"));
+
+builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
 
 var app = builder.Build();
 

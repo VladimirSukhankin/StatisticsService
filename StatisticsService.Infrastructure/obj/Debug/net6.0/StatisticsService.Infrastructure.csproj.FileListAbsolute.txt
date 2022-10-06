@@ -1,0 +1,17 @@
+F:\code\StatisticsService\StatisticsService.Infrastructure\bin\Debug\net6.0\StatisticsService.Infrastructure.deps.json
+F:\code\StatisticsService\StatisticsService.Infrastructure\bin\Debug\net6.0\StatisticsService.Infrastructure.dll
+F:\code\StatisticsService\StatisticsService.Infrastructure\bin\Debug\net6.0\StatisticsService.Infrastructure.pdb
+F:\code\StatisticsService\StatisticsService.Infrastructure\bin\Debug\net6.0\StatisticsService.Core.dll
+F:\code\StatisticsService\StatisticsService.Infrastructure\bin\Debug\net6.0\StatisticsService.Core.pdb
+F:\code\StatisticsService\StatisticsService.Infrastructure\obj\Debug\net6.0\StatisticsService.Infrastructure.csproj.AssemblyReference.cache
+F:\code\StatisticsService\StatisticsService.Infrastructure\obj\Debug\net6.0\StatisticsService.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+F:\code\StatisticsService\StatisticsService.Infrastructure\obj\Debug\net6.0\StatisticsService.Infrastructure.AssemblyInfoInputs.cache
+F:\code\StatisticsService\StatisticsService.Infrastructure\obj\Debug\net6.0\StatisticsService.Infrastructure.AssemblyInfo.cs
+F:\code\StatisticsService\StatisticsService.Infrastructure\obj\Debug\net6.0\StatisticsService.Infrastructure.csproj.CoreCompileInputs.cache
+F:\code\StatisticsService\StatisticsService.Infrastructure\obj\Debug\net6.0\StatisticsService.Infrastructure.csproj.CopyComplete
+F:\code\StatisticsService\StatisticsService.Infrastructure\obj\Debug\net6.0\StatisticsService.Infrastructure.dll
+F:\code\StatisticsService\StatisticsService.Infrastructure\obj\Debug\net6.0\refint\StatisticsService.Infrastructure.dll
+F:\code\StatisticsService\StatisticsService.Infrastructure\obj\Debug\net6.0\StatisticsService.Infrastructure.pdb
+F:\code\StatisticsService\StatisticsService.Infrastructure\obj\Debug\net6.0\ref\StatisticsService.Infrastructure.dll
+F:\code\StatisticsService\StatisticsService.Infrastructure\bin\Debug\net6.0\StatisticsService.Domain.dll
+F:\code\StatisticsService\StatisticsService.Infrastructure\bin\Debug\net6.0\StatisticsService.Domain.pdb

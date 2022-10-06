@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal" created-in="RD-222.4167.23">
+    <data-source name="clickHouse" uuid="3633e074-a811-4cf3-b7ec-f8e96b95ce28">
+      <database-info product="ClickHouse" version="22.7.3.5" jdbc-version="4.2" driver-name="ClickHouse JDBC Driver" driver-version="clickhouse-jdbc 0.3.2-patch11 (revision: 27f8951)" dbms="CLICKHOUSE" exact-version="22.7.3.5" exact-driver-version="0.3">
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>username</user-name>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="schema">
+            <name qname="default" />
+            <name qname="test_database_first" />
+            <name qname="statistics" />
+          </node>
+        </introspection-scope>
+      </schema-mapping>
+    </data-source>
+  </component>
+</project>
