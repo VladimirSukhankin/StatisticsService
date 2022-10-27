@@ -1,46 +1,77 @@
-﻿using ClickHouse.Net;
+﻿using System.Collections;
+using System.ComponentModel;
+using AutoMapper;
+using ClickHouse.Ado;
+using ClickHouse.Net;
 using StatisticsService.Domain.Entities;
 using StatisticsService.Infrastructure.Dto;
 using StatisticsService.Infrastructure.Repositories.Interfaces;
 
 namespace StatisticsService.Infrastructure.Repositories.Common;
 
-public class TransactionRepository: ITransactionRepository
+public class TransactionRepository : ITransactionRepository
 {
-    private readonly IClickHouseDatabase database;
+    private readonly IClickHouseDatabase _database;
+    private readonly IClickHouseConnectionFactory _connection;
+    private readonly IMapper _mapper;
 
-    public TransactionRepository(IClickHouseDatabase database)
+    public TransactionRepository(IClickHouseDatabase database, IMapper mapper, IClickHouseConnectionFactory connection)
     {
-        this.database = database;
+        _database = database;
+        _mapper = mapper;
+        _connection = connection;
     }
 
     public void Dispose()
     {
-        throw new NotImplementedException();
+        try
+        {
+            _database.Open(); 
+            _database.Close();
+        }
+        catch
+        {
+            _database.Close();
+        }
     }
 
-    public Task<IEnumerable<TransactionDto>> GetTransactions()
+    public IEnumerable<TransactionDto> GetTransactions()
     {
         try
         {
-            database.Open();
-            var array = database.ExecuteQueryMapping<Transaction>("select * from transactions");
+            _database.Open();
+            var ss = _database.ExecuteQueryMapping<Transaction>("select * from transactions").ToList();
+            return _mapper.Map<List<TransactionDto>>(ss);
         }
         catch (Exception ex)
         {
-            ;
+            return null!;
         }
-
-        return null;
     }
 
+    
+    
+    
     public Task<TransactionDto> GetTransaction(int tranNo)
     {
         throw new NotImplementedException();
     }
 
-    public Task<TransactionDto> AddTransactions(IEnumerable<TransactionDto> transactions)
+    public bool AddTransactions(IEnumerable<InputTransactionDto> transactions)
     {
-        throw new NotImplementedException();
+        try
+        {
+            _database.Open();
+            var tt = _mapper.Map<List<Transaction>>(transactions);
+            _database.BulkInsert("transactions", new Transaction().GetType().GetProperties().Select(x => x.Name).ToList(), _mapper.Map<List<Transaction>>(transactions));
+           
+           
+            return  true;
+        }
+        catch (Exception ee)
+        {
+            return false;
+        }
     }
 }
+
