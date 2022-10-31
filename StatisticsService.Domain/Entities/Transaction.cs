@@ -47,12 +47,12 @@ public class Transaction:IEnumerable
     /// <summary>
     /// Транспортный номер карты.
     /// </summary>
-    public long CardNumber { get; set; }
+    public long? CardNumber { get; set; }
 
     /// <summary>
     /// Номер кристалла БСК.
     /// </summary>
-    public long CardSerialNumber { get; set; }
+    public long? CardSerialNumber { get; set; }
 
     /// <summary>
     /// Наименование продукта
@@ -77,12 +77,12 @@ public class Transaction:IEnumerable
     /// <summary>
     /// Количество оставшихся проходов.
     /// </summary>
-    public int TicketRemainingTripsCounter { get; set; }
+    public int? TicketRemainingTripsCounter { get; set; }
 
     /// <summary>
     /// Количество пополнений карты.
     /// </summary>
-    public int CardRefillCounter { get; set; }
+    public string CardRefillCounter { get; set; }
 
     /// <summary>
     /// Сумма остатка на карте.
@@ -97,7 +97,7 @@ public class Transaction:IEnumerable
     /// <summary>
     /// Количество совершенных проходов.
     /// </summary>
-    public int CardUsageCounter { get; set; }
+    public int? CardUsageCounter { get; set; }
 
     /// <summary>
     /// Флаг продления (true - да, false - нет).

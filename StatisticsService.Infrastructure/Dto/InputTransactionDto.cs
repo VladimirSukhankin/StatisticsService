@@ -56,13 +56,13 @@ public class InputTransactionDto
     /// Транспортный номер карты.
     /// </summary>
     [JsonProperty("crdNo")]
-    public long? CardNumber { get; set; }
+    public string? CardNumber { get; set; }
 
     /// <summary>
     /// Номер кристалла БСК.
     /// </summary>
     [JsonProperty("crdSerialNo")]
-    public long? CardSerialNumber { get; set; }
+    public string? CardSerialNumber { get; set; }
 
     /// <summary>
     /// Наименование продукта
@@ -74,7 +74,7 @@ public class InputTransactionDto
     /// Признак оформления билета в ЦОД (0 - нет, 1 - да).
     /// </summary>
     [JsonProperty("isOnline")]
-    public bool? IsOnline { get; set; }
+    public string? IsOnline { get; set; }
 
     /// <summary>
     /// Дата начала действия билета.
@@ -92,19 +92,19 @@ public class InputTransactionDto
     /// Количество оставшихся проходов.
     /// </summary>
     [JsonProperty("crdRemainingTripsCounter")]
-    public int? TicketRemainingTripsCounter { get; set; }
+    public string? TicketRemainingTripsCounter { get; set; }
 
     /// <summary>
     /// Количество пополнений карты.
     /// </summary>
     [JsonProperty("crdRefillCounter")]
-    public int? CardRefillCounter { get; set; }
+    public string? CardRefillCounter { get; set; }
 
     /// <summary>
     /// Сумма остатка на карте.
     /// </summary>
     [JsonProperty("crdBalance")]
-    public decimal? CardBalance { get; set; }
+    public string? CardBalance { get; set; }
 
     /// <summary>
     /// Дата и время оформления билета.
@@ -122,11 +122,11 @@ public class InputTransactionDto
     /// Флаг продления (true - да, false - нет).
     /// </summary>
     [JsonProperty("isProlong")]
-    public bool? IsProlong { get; set; }
+    public string? IsProlong { get; set; }
 
     /// <summary>
     /// Стоимость прохода.
     /// </summary>
     [JsonProperty("price")]
-    public decimal? Price { get; set; }
+    public string? Price { get; set; }
 }

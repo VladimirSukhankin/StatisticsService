@@ -1,6 +1,7 @@
 using System.Reflection;
 using ClickHouse.Ado;
 using ClickHouse.Net;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.OpenApi.Models;
 using StatisticsService.Core.Settings;
 using StatisticsService.Infrastructure.Mappings;
@@ -37,6 +38,12 @@ builder.Services.AddTransient(_ => new ClickHouseConnectionSettings(
 builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
 
 builder.Services.AddAutoMapper(typeof(TransactionProfile));
+
+builder.Services.Configure<FormOptions>(x =>
+{
+    x.ValueLengthLimit = int.MaxValue;
+    x.MultipartBodyLengthLimit = int.MaxValue;
+});
 
 var app = builder.Build();
 
