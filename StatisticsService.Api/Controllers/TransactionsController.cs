@@ -48,4 +48,18 @@ public class TransactionsController : ControllerBase
     {
         return _transactionRepository.GetTransactions();
     }
+
+    /// <summary>
+    /// Добавление транзакций через файл
+    /// </summary>
+    [HttpPost]
+    [DisableRequestSizeLimit,
+     RequestFormLimits(MultipartBodyLengthLimit = int.MaxValue, 
+         ValueLengthLimit = int.MaxValue)]
+    [Route("loadTransactionsFiles")]
+    public async Task<ActionResult<IFormFile>> Post(IFormFile[] uploadedFiles)
+    {
+        await _transactionRepository.AddTransactionsFromFile(uploadedFiles);
+        return null;
+    }
 }

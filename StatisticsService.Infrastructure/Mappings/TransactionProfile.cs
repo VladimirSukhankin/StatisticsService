@@ -10,39 +10,12 @@ public class TransactionProfile : Profile
     public TransactionProfile()
     {
         ValueTransformers.Add<string>(val => val ?? "");
-        
+
         CreateMap<TransactionDto, Transaction>()
-            .ForMember(t => t.IsOnline, o =>
-            {
-                o.MapFrom(e => (e.IsOnline != null && e.IsOnline.Value) ? "Y" : "N");
-            })
-            .ForMember(x => x.IsProlong, o =>
-            {
-                o.MapFrom(e => (e.IsProlong != null && e.IsProlong.Value) ? "Y" : "N");
-            })
+            .ForMember(t => t.IsOnline, o => { o.MapFrom(e => (e.IsOnline != null && e.IsOnline.Value) ? "Y" : "N"); })
+            .ForMember(x => x.IsProlong,
+                o => { o.MapFrom(e => (e.IsProlong != null && e.IsProlong.Value) ? "Y" : "N"); })
             .ReverseMap();
-
-        CreateMap<InputTransactionDto, Transaction>()
-            .ForMember(t => t.IsOnline, o =>
-            {
-                o.MapFrom(e => (e.IsOnline != null && e.IsOnline.Value) ? "Y" : "N");
-            })
-            .ForMember(x => x.IsProlong, o =>
-            {
-                o.MapFrom(e => (e.IsProlong != null && e.IsProlong.Value) ? "Y" : "N");
-            });
-
-        CreateMap<Transaction, InputTransactionDto>()
-            .ForMember(it => it.IsOnline, o =>
-            {
-                o.PreCondition(t => !string.IsNullOrEmpty(t.IsOnline));
-                o.MapFrom(t => t.IsOnline == "Y");
-            })
-            .ForMember(x => x.IsProlong, o =>
-            {
-                o.PreCondition(t => !string.IsNullOrEmpty(t.IsProlong));
-                o.MapFrom(t => t.IsProlong == "Y");
-            });
 
         CreateMap<Transaction, TransactionDto>()
             .ForMember(it => it.IsOnline, o =>
@@ -65,5 +38,7 @@ public class TransactionProfile : Profile
                 o.PreCondition(e => !string.IsNullOrEmpty(e.Price));
                 o.MapFrom(t => Decimal.Parse(t.Price));
             });
+
+        CreateMap<InputTransactionDto, Transaction>().ReverseMap();
     }
 }
