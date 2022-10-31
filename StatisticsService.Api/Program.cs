@@ -29,6 +29,7 @@ builder.Services.AddSwaggerGenNewtonsoftSupport();
 var dataBaseSettings = builder.Configuration.GetSection("DataBaseSettings").Get<DataBaseSettings>();
 
 builder.Services.AddClickHouse();
+
 builder.Services.AddTransient(_ => new ClickHouseConnectionSettings(
     $"Host={dataBaseSettings.Host};Port={dataBaseSettings.Port};User={dataBaseSettings.User};" +
     $"Password={dataBaseSettings.Password};Database={dataBaseSettings.Database};Compress={dataBaseSettings.Compress};" +

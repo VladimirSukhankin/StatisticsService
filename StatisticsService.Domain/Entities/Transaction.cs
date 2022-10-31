@@ -77,7 +77,7 @@ public class Transaction:IEnumerable
     /// <summary>
     /// Количество оставшихся проходов.
     /// </summary>
-    public int? TicketRemainingTripsCounter { get; set; }
+    public string TicketRemainingTripsCounter { get; set; }
 
     /// <summary>
     /// Количество пополнений карты.

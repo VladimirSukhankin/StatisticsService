@@ -2,7 +2,7 @@
 using AutoMapper;
 using ClickHouse.Net;
 using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 using StatisticsService.Domain.Entities;
 using StatisticsService.Infrastructure.Dto;
 using StatisticsService.Infrastructure.Repositories.Interfaces;
@@ -13,7 +13,7 @@ public class TransactionRepository : ITransactionRepository
 {
     private readonly IClickHouseDatabase _database;
     private readonly IMapper _mapper;
-    private const int MIN_COUNT_ROWS_FOR_LOAD = 100000;
+    private const int MinCountRowsForLoad = 100000;
     public TransactionRepository(IClickHouseDatabase database, IMapper mapper)
     {
         _database = database;
@@ -64,9 +64,10 @@ public class TransactionRepository : ITransactionRepository
 
             return true;
         }
-        catch
+        catch(Exception e)
         {
-            return false;
+            Console.WriteLine(e);
+            throw;
         }
     }
 
@@ -74,34 +75,43 @@ public class TransactionRepository : ITransactionRepository
     {
         foreach (var file in uploadedFiles)
         {
-            await using var memoryStream = new MemoryStream();
-            await file.CopyToAsync(memoryStream);
             var instance = CodePagesEncodingProvider.Instance;
             Encoding.RegisterProvider(instance);
-            var jsonString = Encoding.GetEncoding(1251).GetString(memoryStream.ToArray());
-            var array = JArray.Parse(jsonString);
-            var countRows = 0;
+            
             var inputTransactions = new List<InputTransactionDto>();
-            foreach (var obj in array.Children<JObject>())
+            var countRows = 0;
+            
+            using (StreamReader streamReader = new StreamReader(file.OpenReadStream(), Encoding.GetEncoding(1251)))
+            using (JsonTextReader reader = new JsonTextReader(streamReader))
             {
-                try
+                reader.SupportMultipleContent = true;
+
+                var serializer = new JsonSerializer();
+                while (await reader.ReadAsync())
                 {
-                    inputTransactions.Add(obj.ToObject<InputTransactionDto>() ?? throw new InvalidOperationException());
-                    countRows++;
-                    if (countRows == MIN_COUNT_ROWS_FOR_LOAD)
+                    if (reader.TokenType == JsonToken.StartObject)
                     {
-                        AddTransactions(inputTransactions);
-                        inputTransactions.Clear();
+                        try
+                        {
+                            inputTransactions.Add(serializer.Deserialize<InputTransactionDto>(reader) ?? throw new InvalidOperationException());
+                            countRows++;
+                            if (countRows == MinCountRowsForLoad)
+                            {
+                                AddTransactions(inputTransactions);
+                                inputTransactions.Clear();
+                                countRows = 0;
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e);
+                            throw;
+                        }
                     }
                 }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                    throw;
-                }
             }
-
-            if (inputTransactions.Count <= 0) continue;
+            
+            if (inputTransactions.Count == 0) continue;
             AddTransactions(inputTransactions);
         }
 

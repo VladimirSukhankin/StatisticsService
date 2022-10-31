@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using StatisticsService.Infrastructure;
 using StatisticsService.Infrastructure.Dto;
 using StatisticsService.Infrastructure.Repositories.Interfaces;
 
 namespace StatisticsService.Controllers;
+
+
 
 /// <summary>
 /// Контроллер для управления транзакциями
@@ -12,8 +13,7 @@ namespace StatisticsService.Controllers;
 [Route("[controller]")]
 public class TransactionsController : ControllerBase
 {
-    private readonly ITransactionRepository _transactionRepository;
-
+    readonly ITransactionRepository _transactionRepository;
     /// <summary>
     /// Конструктор
     /// </summary>
