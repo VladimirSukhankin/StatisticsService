@@ -13,7 +13,8 @@ namespace StatisticsService.Controllers;
 [Route("[controller]")]
 public class TransactionsController : ControllerBase
 {
-    readonly ITransactionRepository _transactionRepository;
+    private readonly ITransactionRepository _transactionRepository;
+
     /// <summary>
     /// Конструктор
     /// </summary>
@@ -39,7 +40,7 @@ public class TransactionsController : ControllerBase
     {
         return _transactionRepository.AddTransactions(transactions) ? Ok() : StatusCode(400);
     }
-    
+
     /// <summary>
     /// Получение всех транзакций
     /// </summary>
@@ -54,12 +55,24 @@ public class TransactionsController : ControllerBase
     /// </summary>
     [HttpPost]
     [DisableRequestSizeLimit,
-     RequestFormLimits(MultipartBodyLengthLimit = int.MaxValue, 
+     RequestFormLimits(MultipartBodyLengthLimit = int.MaxValue,
          ValueLengthLimit = int.MaxValue)]
     [Route("loadTransactionsFiles")]
-    public async Task<ActionResult<IFormFile>> Post(IFormFile[] uploadedFiles)
+    public async Task<ActionResult> Post(IFormFile[] uploadedFiles)
     {
-        await _transactionRepository.AddTransactionsFromFile(uploadedFiles);
-        return null;
+        return await _transactionRepository.AddTransactionsFromFile(uploadedFiles) ? Ok() : BadRequest();
+    }
+
+    /// <summary>
+    /// Добавление транзакций через файл
+    /// </summary>
+    [HttpPost]
+    [DisableRequestSizeLimit,
+     RequestFormLimits(MultipartBodyLengthLimit = int.MaxValue,
+         ValueLengthLimit = int.MaxValue)]
+    [Route("getReportTransactionsPlace")]
+    public IEnumerable<object> GetReportTransactionsPlace()
+    {
+        return _transactionRepository.GetReportTransactionPlaces();
     }
 }

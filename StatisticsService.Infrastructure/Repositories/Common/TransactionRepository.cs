@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.Text.RegularExpressions;
 using AutoMapper;
 using ClickHouse.Net;
 using Microsoft.AspNetCore.Http;
@@ -14,6 +15,7 @@ public class TransactionRepository : ITransactionRepository
     private readonly IClickHouseDatabase _database;
     private readonly IMapper _mapper;
     private const int MinCountRowsForLoad = 100000;
+
     public TransactionRepository(IClickHouseDatabase database, IMapper mapper)
     {
         _database = database;
@@ -39,6 +41,7 @@ public class TransactionRepository : ITransactionRepository
         {
             _database.Open();
             var ss = _database.ExecuteQueryMapping<Transaction>("select * from transactions").ToList();
+            _database.Close();
             return _mapper.Map<List<TransactionDto>>(ss);
         }
         catch (Exception ex)
@@ -64,7 +67,7 @@ public class TransactionRepository : ITransactionRepository
 
             return true;
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             Console.WriteLine(e);
             throw;
@@ -77,10 +80,10 @@ public class TransactionRepository : ITransactionRepository
         {
             var instance = CodePagesEncodingProvider.Instance;
             Encoding.RegisterProvider(instance);
-            
+
             var inputTransactions = new List<InputTransactionDto>();
             var countRows = 0;
-            
+
             using (StreamReader streamReader = new StreamReader(file.OpenReadStream(), Encoding.GetEncoding(1251)))
             using (JsonTextReader reader = new JsonTextReader(streamReader))
             {
@@ -93,7 +96,8 @@ public class TransactionRepository : ITransactionRepository
                     {
                         try
                         {
-                            inputTransactions.Add(serializer.Deserialize<InputTransactionDto>(reader) ?? throw new InvalidOperationException());
+                            inputTransactions.Add(serializer.Deserialize<InputTransactionDto>(reader) ??
+                                                  throw new InvalidOperationException());
                             countRows++;
                             if (countRows == MinCountRowsForLoad)
                             {
@@ -110,11 +114,24 @@ public class TransactionRepository : ITransactionRepository
                     }
                 }
             }
-            
+
             if (inputTransactions.Count == 0) continue;
             AddTransactions(inputTransactions);
         }
 
         return await Task.Run(() => true);
+    }
+
+    public List<ReportTransactionPlaceDto> GetReportTransactionPlaces()
+    {
+        _database.Open();
+
+        return _database.ExecuteQueryMapping<ReportTransactionPlaceDto>
+            ("select PlaceName, count(PlaceName) CountTransaction " +
+             "from statistics.transactions " +
+             "where PlaceName != 'null' " +
+             "Group By PlaceName " +
+             "order by CountTransaction desc")
+            .ToList();
     }
 }
