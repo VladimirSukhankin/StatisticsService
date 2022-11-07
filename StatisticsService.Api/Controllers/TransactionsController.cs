@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StatisticsService.Infrastructure.Dto;
+using StatisticsService.Infrastructure.Dto.Filters;
 using StatisticsService.Infrastructure.Repositories.Interfaces;
 
 namespace StatisticsService.Controllers;
-
-
 
 /// <summary>
 /// Контроллер для управления транзакциями
@@ -45,9 +44,9 @@ public class TransactionsController : ControllerBase
     /// Получение всех транзакций
     /// </summary>
     [HttpGet("getTransactions")]
-    public IEnumerable<TransactionDto> GetTransactions()
+    public IEnumerable<TransactionDto> GetTransactions([FromQuery] PagingParametrs parametrs)
     {
-        return _transactionRepository.GetTransactions();
+        return _transactionRepository.GetTransactions(parametrs);;
     }
 
     /// <summary>
@@ -64,15 +63,22 @@ public class TransactionsController : ControllerBase
     }
 
     /// <summary>
-    /// Добавление транзакций через файл
+    /// Получение отчёта по месту прохода
     /// </summary>
-    [HttpPost]
-    [DisableRequestSizeLimit,
-     RequestFormLimits(MultipartBodyLengthLimit = int.MaxValue,
-         ValueLengthLimit = int.MaxValue)]
+    [HttpGet]
     [Route("getReportTransactionsPlace")]
     public IEnumerable<object> GetReportTransactionsPlace()
     {
         return _transactionRepository.GetReportTransactionPlaces();
+    }
+
+    /// <summary>
+    /// Получение отчёта по дате прохода
+    /// </summary>
+    [HttpGet]
+    [Route("getReportTransactionsDataRange")]
+    public IEnumerable<TransactionDto> GetReportTransactionsDataRange([FromQuery] DataRangeFilter filter, [FromQuery]PagingParametrs parametrs)
+    {
+        return _transactionRepository.GetCountTransactionsForRangeDate(filter, parametrs);
     }
 }

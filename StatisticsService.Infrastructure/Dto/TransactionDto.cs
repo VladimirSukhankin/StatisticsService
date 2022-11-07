@@ -1,8 +1,11 @@
 ﻿namespace StatisticsService.Infrastructure.Dto;
 
+/// <summary>
+/// Объект для передачи.
+/// </summary>
 public class TransactionDto
 {
-      /// <summary>
+    /// <summary>
     /// Номер транзакции на устройстве.
     /// </summary>
     public long TransactionNumber { get; set; }
@@ -75,17 +78,17 @@ public class TransactionDto
     /// <summary>
     /// Количество оставшихся проходов.
     /// </summary>
-    public int? TicketRemainingTripsCounter { get; set; }
+    public int? TicketRemainingTripsCounter { get; set; } = 0;
 
     /// <summary>
     /// Количество пополнений карты.
     /// </summary>
-    public int? CardRefillCounter { get; set; }
+    public int? CardRefillCounter { get; set; } = 0;
 
     /// <summary>
     /// Сумма остатка на карте.
     /// </summary>
-    public decimal? CardBalance { get; set; }
+    public string? CardBalance { get; set; }
 
     /// <summary>
     /// Дата и время оформления билета.
@@ -95,7 +98,7 @@ public class TransactionDto
     /// <summary>
     /// Количество совершенных проходов.
     /// </summary>
-    public int? CardUsageCounter { get; set; }
+    public int? CardUsageCounter { get; set; } = 0;
 
     /// <summary>
     /// Флаг продления (true - да, false - нет).
@@ -105,5 +108,5 @@ public class TransactionDto
     /// <summary>
     /// Стоимость прохода.
     /// </summary>
-    public decimal? Price { get; set; }
+    public string? Price { get; set; }
 }
