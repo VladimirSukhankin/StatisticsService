@@ -1,11 +1,11 @@
 ﻿using System.Text;
-using System.Text.RegularExpressions;
 using AutoMapper;
 using ClickHouse.Net;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using StatisticsService.Domain.Entities;
 using StatisticsService.Infrastructure.Dto;
+using StatisticsService.Infrastructure.Dto.Filters;
 using StatisticsService.Infrastructure.Repositories.Interfaces;
 
 namespace StatisticsService.Infrastructure.Repositories.Common;
@@ -35,22 +35,26 @@ public class TransactionRepository : ITransactionRepository
         }
     }
 
-    public IEnumerable<TransactionDto> GetTransactions()
+    public IEnumerable<TransactionDto> GetTransactions(PagingParametrs parametrs)
     {
         try
         {
             _database.Open();
-            var ss = _database.ExecuteQueryMapping<Transaction>("select * from transactions").ToList();
-            _database.Close();
-            return _mapper.Map<List<TransactionDto>>(ss);
+
+            var transactionsFromDb =
+                _database.ExecuteSelectCommand($"select * from transactions " +
+                                               $"order by TransactionNumber " +
+                                               $"LIMIT {parametrs.PageNumber*parametrs.PageSize},{parametrs.PageSize}");
+            
+            return _mapper.Map<List<TransactionDto>>(ConvertMultidimensionalArrayToTransaction(transactionsFromDb));
         }
         catch (Exception ex)
         {
-            return null!;
+            Console.WriteLine(ex);
+            throw;
         }
     }
-
-
+    
     public Task<TransactionDto> GetTransaction(int tranNo)
     {
         throw new NotImplementedException();
@@ -122,16 +126,82 @@ public class TransactionRepository : ITransactionRepository
         return await Task.Run(() => true);
     }
 
-    public List<ReportTransactionPlaceDto> GetReportTransactionPlaces()
+    public IEnumerable<ReportTransactionPlaceDto> GetReportTransactionPlaces()
     {
-        _database.Open();
+        try
+        {
+            _database.Open();
 
-        return _database.ExecuteQueryMapping<ReportTransactionPlaceDto>
-            ("select PlaceName, count(PlaceName) CountTransaction " +
-             "from statistics.transactions " +
-             "where PlaceName != 'null' " +
-             "Group By PlaceName " +
-             "order by CountTransaction desc")
-            .ToList();
+            var report = _database.ExecuteQueryMapping<ReportTransactionPlaceDto>
+                ("select PlaceName, count(PlaceName) CountTransaction " +
+                 "from statistics.transactions " +
+                 "where PlaceName != 'null' " +
+                 "Group By PlaceName " +
+                 "order by CountTransaction desc")
+                .ToList();
+            
+            return report;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+            throw;
+        }
+    }
+
+    public IEnumerable<TransactionDto> GetCountTransactionsForRangeDate(DataRangeFilter dataRangeFilter, PagingParametrs parametrs)
+    {
+        try
+        {
+            _database.Open();
+
+            var transactions = _database.ExecuteSelectCommand
+                ($"select * from statistics.transactions" +
+                 $" where parseDateTimeBestEffort(TransactionDate) > parseDateTimeBestEffort('{dataRangeFilter.StartRange}')" +
+                 $" and parseDateTimeBestEffort(TransactionDate) < parseDateTimeBestEffort('{dataRangeFilter.EndRange}')" +
+                 $" order by TransactionNumber " +
+                 $"LIMIT {parametrs.PageNumber*parametrs.PageSize},{parametrs.PageSize}");
+
+            return _mapper.Map<List<TransactionDto>>(ConvertMultidimensionalArrayToTransaction(transactions));
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+
+    private IEnumerable<Transaction> ConvertMultidimensionalArrayToTransaction(object[][] array)
+    {
+        try
+        {
+            var nameProp = new Transaction()
+                .GetType()
+                .GetProperties()
+                .Select(x => x.Name)
+                .ToList();
+
+            var transactions = new List<Transaction>();
+            foreach (var transactionInArray in array.ToList())
+            {
+                var transaction = new Transaction();
+                for (var i = 0; i < transactionInArray.Length; i++)
+                {
+                    transaction
+                        .GetType()
+                        .GetProperty(nameProp[i])?
+                        .SetValue(transaction, transactionInArray[i]);
+                }
+
+                transactions.Add(transaction);
+            }
+
+            return transactions;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+            throw;
+        }
     }
 }

@@ -12,33 +12,34 @@ public class TransactionProfile : Profile
         ValueTransformers.Add<string>(val => val ?? "");
 
         CreateMap<TransactionDto, Transaction>()
-            .ForMember(t => t.IsOnline, o => { o.MapFrom(e => (e.IsOnline != null && e.IsOnline.Value) ? "Y" : "N"); })
+            .ForMember(t => t.IsOnline, o => { o.MapFrom(e => (e.IsOnline != null && e.IsOnline.Value) ? "1" : "0"); })
             .ForMember(x => x.IsProlong,
-                o => { o.MapFrom(e => (e.IsProlong != null && e.IsProlong.Value) ? "Y" : "N"); })
-            .ReverseMap();
+                o => { o.MapFrom(e => (e.IsProlong != null && e.IsProlong.Value) ? "1" : "0"); });
 
         CreateMap<Transaction, TransactionDto>()
             .ForMember(it => it.IsOnline, o =>
             {
                 o.PreCondition(t => !string.IsNullOrEmpty(t.IsOnline));
-                o.MapFrom(t => t.IsOnline == "Y");
+                o.MapFrom(t => t.IsOnline == "1");
             })
             .ForMember(x => x.IsProlong, o =>
             {
                 o.PreCondition(t => !string.IsNullOrEmpty(t.IsProlong));
-                o.MapFrom(t => t.IsProlong == "Y");
+                o.MapFrom(t => t.IsProlong == "1");
             })
-            .ForMember(t => t.CardBalance, o =>
+            .ForMember(x => x.CardRefillCounter, o =>
             {
-                o.PreCondition(e => !string.IsNullOrEmpty(e.CardBalance));
-                o.MapFrom(t => Decimal.Parse(t.CardBalance));
+                o.MapFrom(t => ConvertToNullableInt(t.CardRefillCounter));
             })
-            .ForMember(t => t.Price, o =>
+            .ForMember(x => x.TicketRemainingTripsCounter, o =>
             {
-                o.PreCondition(e => !string.IsNullOrEmpty(e.Price));
-                o.MapFrom(t => Decimal.Parse(t.Price));
+               
+                o.MapFrom(t => ConvertToNullableInt(t.TicketRemainingTripsCounter));
             });
 
         CreateMap<InputTransactionDto, Transaction>().ReverseMap();
     }
+
+    private static int? ConvertToNullableInt(string? value) => int.TryParse (value, out var i) ? i : null;
+   
 }
