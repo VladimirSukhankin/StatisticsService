@@ -19,7 +19,7 @@ public class SwaggerFileOperationFilter : IOperationFilter
         {
             operation.Parameters = new List<OpenApiParameter>
             {
-                new OpenApiParameter()
+                new()
                 {
                     Name = "uploadedFiles",
                     Required = true,

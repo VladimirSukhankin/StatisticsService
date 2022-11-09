@@ -39,16 +39,7 @@ public class TransactionsController : ControllerBase
     {
         return _transactionRepository.AddTransactions(transactions) ? Ok() : StatusCode(400);
     }
-
-    /// <summary>
-    /// Получение всех транзакций
-    /// </summary>
-    [HttpGet("getTransactions")]
-    public IEnumerable<TransactionDto> GetTransactions([FromQuery] PagingParametrs parametrs)
-    {
-        return _transactionRepository.GetTransactions(parametrs);;
-    }
-
+    
     /// <summary>
     /// Добавление транзакций через файл
     /// </summary>
@@ -63,22 +54,42 @@ public class TransactionsController : ControllerBase
     }
 
     /// <summary>
+    /// Получение всех транзакций c пагинацией
+    /// </summary>
+    [HttpGet("getTransactions")]
+    public IEnumerable<TransactionDto> GetTransactions([FromQuery] PagingParametrs parametrs)
+    {
+        return _transactionRepository.GetTransactions(parametrs);;
+    }
+
+    
+    /// <summary>
     /// Получение отчёта по месту прохода
     /// </summary>
     [HttpGet]
     [Route("getReportTransactionsPlace")]
-    public IEnumerable<object> GetReportTransactionsPlace()
+    public IEnumerable<object> GetReportTransactionPlace()
     {
         return _transactionRepository.GetReportTransactionPlaces();
     }
 
     /// <summary>
-    /// Получение отчёта по дате прохода
+    /// Получение отчёта по дате прохода с пагинацией
     /// </summary>
     [HttpGet]
     [Route("getReportTransactionsDataRange")]
     public IEnumerable<TransactionDto> GetReportTransactionsDataRange([FromQuery] DataRangeFilter filter, [FromQuery]PagingParametrs parametrs)
     {
-        return _transactionRepository.GetCountTransactionsForRangeDate(filter, parametrs);
+        return _transactionRepository.GetReportTransactionsForRangeDate(filter, parametrs);
+    }
+    
+    /// <summary>
+    /// Получение отчёта по непродленным билетам
+    /// </summary>
+    [HttpGet]
+    [Route("getReportTransactionsWithNotProlong")]
+    public IEnumerable<TransactionDto> GetReportTransactionsNotProlong([FromQuery]PagingParametrs parametrs)
+    {
+        return _transactionRepository.GetReportTransactionsWithNotProlong(parametrs);
     }
 }
