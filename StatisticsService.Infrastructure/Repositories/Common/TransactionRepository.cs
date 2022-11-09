@@ -35,7 +35,7 @@ public class TransactionRepository : ITransactionRepository
         }
     }
 
-    public IEnumerable<TransactionDto> GetTransactions(PagingParametrs parametrs)
+    public IEnumerable<TransactionDto> GetTransactions(PagingParametrs parameters)
     {
         try
         {
@@ -44,7 +44,7 @@ public class TransactionRepository : ITransactionRepository
             var transactionsFromDb =
                 _database.ExecuteSelectCommand($"select * from transactions " +
                                                $"order by TransactionNumber " +
-                                               $"LIMIT {parametrs.PageNumber*parametrs.PageSize},{parametrs.PageSize}");
+                                               $"LIMIT {parameters.PageNumber*parameters.PageSize},{parameters.PageSize}");
             
             return _mapper.Map<List<TransactionDto>>(ConvertMultidimensionalArrayToTransaction(transactionsFromDb));
         }
@@ -149,7 +149,7 @@ public class TransactionRepository : ITransactionRepository
         }
     }
 
-    public IEnumerable<TransactionDto> GetCountTransactionsForRangeDate(DataRangeFilter dataRangeFilter, PagingParametrs parametrs)
+    public IEnumerable<TransactionDto> GetReportTransactionsForRangeDate(DataRangeFilter dataRangeFilter, PagingParametrs parameters)
     {
         try
         {
@@ -160,7 +160,7 @@ public class TransactionRepository : ITransactionRepository
                  $" where parseDateTimeBestEffort(TransactionDate) > parseDateTimeBestEffort('{dataRangeFilter.StartRange}')" +
                  $" and parseDateTimeBestEffort(TransactionDate) < parseDateTimeBestEffort('{dataRangeFilter.EndRange}')" +
                  $" order by TransactionNumber " +
-                 $"LIMIT {parametrs.PageNumber*parametrs.PageSize},{parametrs.PageSize}");
+                 $"LIMIT {parameters.PageNumber*parameters.PageSize},{parameters.PageSize}");
 
             return _mapper.Map<List<TransactionDto>>(ConvertMultidimensionalArrayToTransaction(transactions));
         }
@@ -171,7 +171,28 @@ public class TransactionRepository : ITransactionRepository
         }
     }
 
-    private IEnumerable<Transaction> ConvertMultidimensionalArrayToTransaction(object[][] array)
+    public IEnumerable<TransactionDto> GetReportTransactionsWithNotProlong(PagingParametrs parameters)
+    {
+        try
+        {
+            _database.Open();
+
+            var transactions = _database.ExecuteSelectCommand
+            ($"select * from transactions" +
+             " where IsProlong = '0'" +
+             $" order by TransactionNumber " +
+             $"LIMIT {parameters.PageNumber*parameters.PageSize},{parameters.PageSize}");
+
+            return _mapper.Map<List<TransactionDto>>(ConvertMultidimensionalArrayToTransaction(transactions));
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+
+    private static IEnumerable<Transaction> ConvertMultidimensionalArrayToTransaction(IEnumerable<object[]> array)
     {
         try
         {

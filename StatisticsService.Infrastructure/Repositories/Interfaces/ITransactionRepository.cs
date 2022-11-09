@@ -11,5 +11,7 @@ public interface ITransactionRepository : IDisposable
     bool AddTransactions(IEnumerable<InputTransactionDto> transactions);
     Task<bool> AddTransactionsFromFile(IFormFile[] uploadedFiles);
     IEnumerable<ReportTransactionPlaceDto> GetReportTransactionPlaces();
-    IEnumerable<TransactionDto> GetCountTransactionsForRangeDate(DataRangeFilter dataRangeFilter, PagingParametrs parametrs);
+    IEnumerable<TransactionDto> GetReportTransactionsForRangeDate(DataRangeFilter dataRangeFilter, PagingParametrs parameters);
+
+    IEnumerable<TransactionDto> GetReportTransactionsWithNotProlong(PagingParametrs parameters);
 }
