@@ -48,18 +48,14 @@ builder.Services.Configure<FormOptions>(x =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+app.UseSwagger();
+app.UseSwaggerUI(setupAction =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(setupAction =>
-    {
-        setupAction.SwaggerEndpoint(
-            "./swagger/ApiSpecification/swagger.json",
-            "API");
-        setupAction.RoutePrefix = string.Empty;
-    });
-}
+    setupAction.SwaggerEndpoint(
+        "./swagger/ApiSpecification/swagger.json",
+        "API");
+    setupAction.RoutePrefix = string.Empty;
+});
 
 app.UseHttpsRedirection();
 
