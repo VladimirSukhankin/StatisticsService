@@ -54,6 +54,15 @@ public class TransactionsController : ControllerBase
     }
 
     /// <summary>
+    /// Получение транзакции по номеру
+    /// </summary>
+    [HttpGet("getTransactions")]
+    public ActionResult<TransactionDto> GetTransaction([FromQuery] int transactionNumber)
+    {
+        return _transactionRepository.GetTransaction(transactionNumber);;
+    }
+    
+    /// <summary>
     /// Получение всех транзакций c пагинацией
     /// </summary>
     [HttpGet("getTransactions")]
