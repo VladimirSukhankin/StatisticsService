@@ -116,7 +116,7 @@ public class InputTransactionDto
     /// Количество совершенных проходов.
     /// </summary>
     [JsonProperty("crdUsageCounter")]
-    public int? CardUsageCounter { get; set; }
+    public string? CardUsageCounter { get; set; }
 
     /// <summary>
     /// Флаг продления (true - да, false - нет).

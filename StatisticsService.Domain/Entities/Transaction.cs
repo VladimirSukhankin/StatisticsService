@@ -92,7 +92,7 @@ public class Transaction:IEnumerable
     /// <summary>
     /// Количество совершенных проходов.
     /// </summary>
-    public int? CardUsageCounter { get; set; }
+    public string? CardUsageCounter { get; set; }
 
     /// <summary>
     /// Флаг продления (true - да, false - нет).

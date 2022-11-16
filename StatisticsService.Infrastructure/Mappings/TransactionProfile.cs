@@ -35,7 +35,12 @@ public class TransactionProfile : Profile
             {
                
                 o.MapFrom(t => ConvertToNullableInt(t.TicketRemainingTripsCounter));
-            });
+            })
+            .ForMember(x => x.CardUsageCounter, o =>
+            {
+               
+                o.MapFrom(t => ConvertToNullableInt(t.CardUsageCounter));
+            });;
 
         CreateMap<InputTransactionDto, Transaction>().ReverseMap();
     }
