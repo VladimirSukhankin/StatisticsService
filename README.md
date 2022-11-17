@@ -37,10 +37,15 @@ create table statistics.transactions
 4) скачать имейдж сервиса отчётов docker pull revsuhlab/statistics-services:version2
 5) выполнить для него docker run --name statistics-service -p 8080:80 -p 8081:443 -e ASPNETCORE_URLS="https://+;http://+" -e ASPNETCORE_HTTPS_PORT=8081 -e ASPNETCORE_ENVIRONMENT=Development revsuhlab/statistics-services:version1
 6) проверить на https://localhost:8081 Options запрос
-7)docker network create statistics-network
+7)для взаимодействия контейнеров необходимо создать локальную сеть docker network create statistics-network
+проверить создание
 docker network inspect statistics-network
+подключить два контейнера
 docker network connect statistics-network test_new
 docker network connect statistics-network statistics-service
+и проверить что всё успешно подключилось
+docker network inspect statistics-network
+
 8) можно загрузить транзакции через файл с https://disk.yandex.ru/d/ULtgjg1JX--J9g  или в ручную
 
 # Для запуска на локальной машине:
