@@ -16,6 +16,12 @@ public class TransactionProfile : Profile
             .ForMember(x => x.IsProlong,
                 o => { o.MapFrom(e => (e.IsProlong != null && e.IsProlong.Value) ? "1" : "0"); });
 
+        CreateMap<TransactionDto, TransactionSql>()
+            .ForMember(t => t.IsOnline, o => { o.MapFrom(e => (e.IsOnline != null && e.IsOnline.Value) ? "1" : "0"); })
+            .ForMember(x => x.IsProlong,
+                o => { o.MapFrom(e => (e.IsProlong != null && e.IsProlong.Value) ? "1" : "0"); });
+
+
         CreateMap<Transaction, TransactionDto>()
             .ForMember(it => it.IsOnline, o =>
             {
@@ -27,24 +33,39 @@ public class TransactionProfile : Profile
                 o.PreCondition(t => !string.IsNullOrEmpty(t.IsProlong));
                 o.MapFrom(t => t.IsProlong == "1");
             })
-            .ForMember(x => x.CardRefillCounter, o =>
+            .ForMember(x => x.CardRefillCounter, o => { o.MapFrom(t => ConvertToNullableInt(t.CardRefillCounter)); })
+            .ForMember(x => x.TicketRemainingTripsCounter,
+                o => { o.MapFrom(t => ConvertToNullableInt(t.TicketRemainingTripsCounter)); })
+            .ForMember(x => x.CardUsageCounter, o => { o.MapFrom(t => ConvertToNullableInt(t.CardUsageCounter)); });
+        ;
+
+        CreateMap<TransactionSql, TransactionDto>()
+            .ForMember(it => it.IsOnline, o =>
             {
-                o.MapFrom(t => ConvertToNullableInt(t.CardRefillCounter));
+                o.PreCondition(t => !string.IsNullOrEmpty(t.IsOnline));
+                o.MapFrom(t => t.IsOnline == "1");
             })
-            .ForMember(x => x.TicketRemainingTripsCounter, o =>
+            .ForMember(x => x.IsProlong, o =>
             {
-               
-                o.MapFrom(t => ConvertToNullableInt(t.TicketRemainingTripsCounter));
+                o.PreCondition(t => !string.IsNullOrEmpty(t.IsProlong));
+                o.MapFrom(t => t.IsProlong == "1");
             })
+            .ForMember(x => x.CardRefillCounter, o => { o.MapFrom(t => ConvertToNullableInt(t.CardRefillCounter)); })
+            .ForMember(x => x.TicketRemainingTripsCounter, 
+                o =>
+                {
+                    o.MapFrom(t => ConvertToNullableInt(t.TicketRemainingTripsCounter)); 
+                    
+                })
             .ForMember(x => x.CardUsageCounter, o =>
             {
-               
-                o.MapFrom(t => ConvertToNullableInt(t.CardUsageCounter));
-            });;
+                o.MapFrom(t => ConvertToNullableInt(t.CardUsageCounter)); 
+                
+            });
 
         CreateMap<InputTransactionDto, Transaction>().ReverseMap();
+        CreateMap<InputTransactionDto, TransactionSql>().ReverseMap();
     }
 
-    private static int? ConvertToNullableInt(string? value) => int.TryParse (value, out var i) ? i : null;
-   
+    private static int? ConvertToNullableInt(string? value) => int.TryParse(value, out var i) ? i : null;
 }

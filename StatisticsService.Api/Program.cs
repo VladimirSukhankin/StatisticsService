@@ -2,8 +2,10 @@ using System.Reflection;
 using ClickHouse.Ado;
 using ClickHouse.Net;
 using Microsoft.AspNetCore.Http.Features;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using StatisticsService.Core.Settings;
+using StatisticsService.Infrastructure;
 using StatisticsService.Infrastructure.Mappings;
 using StatisticsService.Infrastructure.Repositories.Common;
 using StatisticsService.Infrastructure.Repositories.Interfaces;
@@ -22,7 +24,8 @@ builder.Services.AddSwaggerGen(setupAction =>
         Version = "1"
     });
     setupAction.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
-    setupAction.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
+    setupAction.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory,
+        $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
 });
 builder.Services.AddSwaggerGenNewtonsoftSupport();
 
@@ -37,6 +40,7 @@ builder.Services.AddTransient(_ => new ClickHouseConnectionSettings(
     $"Compressor={dataBaseSettings.Compressor}"));
 
 builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
+builder.Services.AddScoped<ITransactionSqlRepository, TransactionSqlRepository>();
 
 builder.Services.AddAutoMapper(typeof(TransactionProfile));
 
@@ -45,6 +49,10 @@ builder.Services.Configure<FormOptions>(x =>
     x.ValueLengthLimit = int.MaxValue;
     x.MultipartBodyLengthLimit = int.MaxValue;
 });
+
+    builder.Services.AddDbContext<SqlPostgresDbContext>(options =>
+    options.UseNpgsql(
+        builder.Configuration.GetConnectionString("postgresConnection")));
 
 var app = builder.Build();
 
@@ -64,4 +72,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-

@@ -22,20 +22,7 @@ public class TransactionRepository : ITransactionRepository
         _mapper = mapper;
     }
 
-    public void Dispose()
-    {
-        try
-        {
-            _database.Open();
-            _database.Close();
-        }
-        catch
-        {
-            _database.Close();
-        }
-    }
-
-    public IEnumerable<TransactionDto> GetTransactions(PagingParametrs parameters)
+    public Task<IEnumerable<TransactionDto>> GetTransactions(PagingParametrs parameters)
     {
         try
         {
@@ -44,9 +31,12 @@ public class TransactionRepository : ITransactionRepository
             var transactionsFromDb =
                 _database.ExecuteSelectCommand($"select * from transactions " +
                                                $"order by TransactionNumber " +
-                                               $"LIMIT {parameters.PageNumber * parameters.PageSize},{parameters.PageSize}");
+                                               $"LIMIT {(parameters.PageNumber - 1) * parameters.PageSize},{parameters.PageSize}");
 
-            return _mapper.Map<List<TransactionDto>>(ConvertMultidimensionalArrayToTransaction(transactionsFromDb));
+            _database.Close();
+            return Task.Run(() =>
+                _mapper.Map<IEnumerable<TransactionDto>>(
+                    ConvertMultidimensionalArrayToTransaction(transactionsFromDb)));
         }
         catch (Exception ex)
         {
@@ -55,7 +45,7 @@ public class TransactionRepository : ITransactionRepository
         }
     }
 
-    public TransactionDto GetTransaction(int tranNo)
+    public Task<TransactionDto> GetTransaction(int tranNo)
     {
         try
         {
@@ -64,8 +54,8 @@ public class TransactionRepository : ITransactionRepository
             var transactionFromDb =
                 _database.ExecuteSelectCommand($"select * from transactions " +
                                                $"where TransactionNumber = {tranNo} ");
-            
-            return _mapper.Map<TransactionDto>(transactionFromDb);
+
+            return Task.Run(() => _mapper.Map<TransactionDto>(transactionFromDb));
         }
         catch (Exception ex)
         {
@@ -74,7 +64,7 @@ public class TransactionRepository : ITransactionRepository
         }
     }
 
-    public bool AddTransactions(IEnumerable<InputTransactionDto> transactions)
+    public Task<bool> AddTransactions(IEnumerable<InputTransactionDto> transactions)
     {
         try
         {
@@ -95,7 +85,7 @@ public class TransactionRepository : ITransactionRepository
             _database.ExecuteNonQuery(
                 $"INSERT INTO transactions ({string.Join(", ", new Transaction().GetType().GetProperties().Select(x => x.Name).ToArray())}) VALUES {string.Join(", ", listValues)}");
 
-            return true;
+            return Task.Run(() => true);
         }
         catch (Exception e)
         {
@@ -114,39 +104,37 @@ public class TransactionRepository : ITransactionRepository
             var inputTransactions = new List<InputTransactionDto>();
             var countRows = 0;
 
-            using (StreamReader streamReader = new StreamReader(file.OpenReadStream(), Encoding.GetEncoding(1251)))
-            using (JsonTextReader reader = new JsonTextReader(streamReader))
+            using (var streamReader = new StreamReader(file.OpenReadStream(), Encoding.GetEncoding(1251)))
+            using (var reader = new JsonTextReader(streamReader))
             {
                 reader.SupportMultipleContent = true;
 
                 var serializer = new JsonSerializer();
                 while (await reader.ReadAsync())
                 {
-                    if (reader.TokenType == JsonToken.StartObject)
+                    if (reader.TokenType != JsonToken.StartObject) continue;
+                    try
                     {
-                        try
+                        inputTransactions.Add(serializer.Deserialize<InputTransactionDto>(reader) ??
+                                              throw new InvalidOperationException());
+                        countRows++;
+                        if (countRows == MinCountRowsForLoad)
                         {
-                            inputTransactions.Add(serializer.Deserialize<InputTransactionDto>(reader) ??
-                                                  throw new InvalidOperationException());
-                            countRows++;
-                            if (countRows == MinCountRowsForLoad)
-                            {
-                                AddTransactions(inputTransactions);
-                                inputTransactions.Clear();
-                                countRows = 0;
-                            }
+                            await AddTransactions(inputTransactions);
+                            inputTransactions.Clear();
+                            countRows = 0;
                         }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine(e);
-                            throw;
-                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        throw;
                     }
                 }
             }
 
             if (inputTransactions.Count == 0) continue;
-            AddTransactions(inputTransactions);
+            await AddTransactions(inputTransactions);
         }
 
         return await Task.Run(() => true);
