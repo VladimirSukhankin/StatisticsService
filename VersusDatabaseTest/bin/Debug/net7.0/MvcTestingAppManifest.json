@@ -1,0 +1,6 @@
+{
+  "StatisticsService.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "F:\\code\\StatisticsService\\StatisticsService.Api",
+  "StatisticsService.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "F:\\code\\StatisticsService\\StatisticsService.Core",
+  "StatisticsService.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "F:\\code\\StatisticsService\\StatisticsService.Domain",
+  "StatisticsService.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "F:\\code\\StatisticsService\\StatisticsService.Infrastructure"
+}

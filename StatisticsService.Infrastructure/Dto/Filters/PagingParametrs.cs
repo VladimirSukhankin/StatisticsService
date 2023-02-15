@@ -8,10 +8,10 @@ public class PagingParametrs
     /// <summary>
     /// Номер страницы.
     /// </summary>
-    public int PageNumber { get; set; } = 1;
+    public int PageNumber { get; set; } = 4;
 
     /// <summary>
     /// Размер страницы.
     /// </summary>
-    public int PageSize { get; set; } = 100;
+    public int PageSize { get; set; } = 100000;
 }
