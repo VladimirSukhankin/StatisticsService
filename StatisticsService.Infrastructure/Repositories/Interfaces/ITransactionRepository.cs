@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using StatisticsService.Infrastructure.Dto;
+﻿using StatisticsService.Infrastructure.Dto;
 using StatisticsService.Infrastructure.Dto.Filters;
 
 namespace StatisticsService.Infrastructure.Repositories.Interfaces;

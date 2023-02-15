@@ -34,6 +34,24 @@ public class TransactionsController : ControllerBase
     }
 
     /// <summary>
+    /// Добавление рандомных транзакций
+    /// </summary>
+    [HttpPost("addRandomTransactions")]
+    public async Task<ActionResult> AddRandom()
+    {
+        return await _transactionRepository.AddRandomTransactions() ? Ok() : StatusCode(400);
+    }
+    
+    /// <summary>
+    /// Добавление рандомных транзакций в Postgres
+    /// </summary>
+    [HttpPost("addRandomTransactionsSql")]
+    public async Task<ActionResult> AddRandomSql()
+    {
+        return await _transactionSqlRepository.AddRandomTransactions() ? Ok() : StatusCode(400);
+    }
+    
+    /// <summary>
     /// Добавление транзакций
     /// </summary>
     [HttpPost("addTransactions")]
@@ -119,7 +137,7 @@ public class TransactionsController : ControllerBase
     /// </summary>
     [HttpGet]
     [Route("getReportTransactionsPlace")]
-    public IEnumerable<object> GetReportTransactionPlace()
+    public Task<List<ReportTransactionPlaceDto>> GetReportTransactionPlace()
     {
         return _transactionRepository.GetReportTransactionPlaces();
     }
@@ -129,7 +147,7 @@ public class TransactionsController : ControllerBase
     /// </summary>
     [HttpGet]
     [Route("getReportTransactionsPlaceSql")]
-    public IEnumerable<object> GetReportTransactionPlaceSql()
+    public Task<List<ReportTransactionPlaceDto>> GetReportTransactionPlaceSql()
     {
         return _transactionSqlRepository.GetReportTransactionPlaces();
     }
