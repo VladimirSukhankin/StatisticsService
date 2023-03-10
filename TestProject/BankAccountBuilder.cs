@@ -4,7 +4,7 @@ namespace TestProject;
 
 public class BankAccountBuilder
 {
-    private BankAccount _bankAccount = new BankAccount();
+    private readonly BankAccount _bankAccount = new();
 
     public BankAccountBuilder WithStartBalance(double balance)
     {
@@ -20,7 +20,6 @@ public class BankAccountBuilder
     
     public BankAccountBuilder WithName(string name)
     {
-        _bankAccount.NameCustomer = name;
         return this;
     }
 

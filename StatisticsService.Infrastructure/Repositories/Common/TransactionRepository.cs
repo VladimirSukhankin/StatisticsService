@@ -106,7 +106,7 @@ public class TransactionRepository : ITransactionRepository
             _database.Open();
 
             var transactionFromDb =
-                _database.ExecuteSelectCommand($"select * from transactions " +
+                _database.ExecuteSelectCommand("select * from transactions " +
                                                $"where TransactionNumber = {tranNo} ");
 
             return Task.Run(() => _mapper.Map<TransactionDto>(transactionFromDb));
@@ -128,7 +128,7 @@ public class TransactionRepository : ITransactionRepository
                         .GetProperties()
                         .Select(x => (x.GetValue(value), x.PropertyType))
                         .ToList()
-                        .Select(x => (x.PropertyType == typeof(long) || x.PropertyType == typeof(Int32))
+                        .Select(x => x.PropertyType == typeof(long) || x.PropertyType == typeof(int)
                             ? x.Item1?.ToString()
                             : $"'{x.Item1}'")
                         .ToArray()))
@@ -225,10 +225,10 @@ public class TransactionRepository : ITransactionRepository
             _database.Open();
 
             var transactions = _database.ExecuteSelectCommand
-            ($"select * from statistics.transactions" +
+            ("select * from statistics.transactions" +
              $" where parseDateTimeBestEffort(TransactionDate) > parseDateTimeBestEffort('{dataRangeFilter.StartRange}')" +
              $" and parseDateTimeBestEffort(TransactionDate) < parseDateTimeBestEffort('{dataRangeFilter.EndRange}')" +
-             $" order by TransactionNumber " +
+             " order by TransactionNumber " +
              $"LIMIT {parameters.PageNumber * parameters.PageSize},{parameters.PageSize}");
 
             return _mapper.Map<List<TransactionDto>>(ConvertMultidimensionalArrayToTransaction(transactions));
@@ -247,9 +247,9 @@ public class TransactionRepository : ITransactionRepository
             _database.Open();
 
             var transactions = _database.ExecuteSelectCommand
-            ($"select * from transactions" +
+            ("select * from transactions" +
              " where IsProlong = '0'" +
-             $" order by TransactionNumber " +
+             " order by TransactionNumber " +
              $"LIMIT {parameters.PageNumber * parameters.PageSize},{parameters.PageSize}");
 
             return _mapper.Map<List<TransactionDto>>(ConvertMultidimensionalArrayToTransaction(transactions));

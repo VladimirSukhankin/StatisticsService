@@ -1,5 +1,4 @@
 ﻿using System.Data.Common;
-using System.Linq;
 using ClickHouse.Ado;
 using ClickHouse.Net;
 using Microsoft.AspNetCore.Hosting;
@@ -34,7 +33,7 @@ public class CustomWebApplicationFactory<TProgram>
 
             services.Remove(dbConnectionDescriptor!);
 
-            services.AddSingleton<DbConnection>(container =>
+            services.AddSingleton<DbConnection>(_ =>
             {
                 var connection = new NpgsqlConnection("Server=localhost;Port=5432;User ID=postgres;Database=statistics;Password=1;TrustServerCertificate=True");
                 connection.Open();
@@ -51,10 +50,10 @@ public class CustomWebApplicationFactory<TProgram>
             services.AddClickHouse();
 
             services.AddTransient(_ => new ClickHouseConnectionSettings(
-                $"Host=localhost;Port=18999;User=username;" +
-                $"Password=password;Database=statistics;Compress=True;" +
-                $"CheckCompressedHash=False;SocketTimeout=60000000;" +
-                $"Compressor=lz4"));
+                "Host=localhost;Port=18999;User=username;" +
+                "Password=password;Database=statistics;Compress=True;" +
+                "CheckCompressedHash=False;SocketTimeout=60000000;" +
+                "Compressor=lz4"));
             
             services.AddScoped<ITransactionRepository, TransactionRepository>();
             services.AddScoped<ITransactionSqlRepository, TransactionSqlRepository>();

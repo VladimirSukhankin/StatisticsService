@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using AutoMapper;
+﻿using AutoMapper;
 using StatisticsService.Domain.Entities;
 using StatisticsService.Infrastructure.Dto;
 
@@ -12,14 +11,14 @@ public class TransactionProfile : Profile
         ValueTransformers.Add<string>(val => val ?? "");
 
         CreateMap<TransactionDto, Transaction>()
-            .ForMember(t => t.IsOnline, o => { o.MapFrom(e => (e.IsOnline != null && e.IsOnline.Value) ? "1" : "0"); })
+            .ForMember(t => t.IsOnline, o => { o.MapFrom(e => e.IsOnline != null && e.IsOnline.Value ? "1" : "0"); })
             .ForMember(x => x.IsProlong,
-                o => { o.MapFrom(e => (e.IsProlong != null && e.IsProlong.Value) ? "1" : "0"); });
+                o => { o.MapFrom(e => e.IsProlong != null && e.IsProlong.Value ? "1" : "0"); });
 
         CreateMap<TransactionDto, TransactionSql>()
-            .ForMember(t => t.IsOnline, o => { o.MapFrom(e => (e.IsOnline != null && e.IsOnline.Value) ? "1" : "0"); })
+            .ForMember(t => t.IsOnline, o => { o.MapFrom(e => e.IsOnline != null && e.IsOnline.Value ? "1" : "0"); })
             .ForMember(x => x.IsProlong,
-                o => { o.MapFrom(e => (e.IsProlong != null && e.IsProlong.Value) ? "1" : "0"); });
+                o => { o.MapFrom(e => e.IsProlong != null && e.IsProlong.Value ? "1" : "0"); });
 
 
         CreateMap<Transaction, TransactionDto>()
