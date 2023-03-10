@@ -5309,11 +5309,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\code\\StatisticsService\\VersusDatabaseTest\\VersusDatabaseTest.csproj",
+      "projectUniqueName": "F:\\code\\NewStatistics\\StatisticsService\\VersusDatabaseTest\\VersusDatabaseTest.csproj",
       "projectName": "VersusDatabaseTest",
-      "projectPath": "F:\\code\\StatisticsService\\VersusDatabaseTest\\VersusDatabaseTest.csproj",
+      "projectPath": "F:\\code\\NewStatistics\\StatisticsService\\VersusDatabaseTest\\VersusDatabaseTest.csproj",
       "packagesPath": "C:\\Users\\Family\\.nuget\\packages\\",
-      "outputPath": "F:\\code\\StatisticsService\\VersusDatabaseTest\\obj\\",
+      "outputPath": "F:\\code\\NewStatistics\\StatisticsService\\VersusDatabaseTest\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Family\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -5331,8 +5331,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "F:\\code\\StatisticsService\\StatisticsService.Api\\StatisticsService.Api.csproj": {
-              "projectPath": "F:\\code\\StatisticsService\\StatisticsService.Api\\StatisticsService.Api.csproj"
+            "F:\\code\\NewStatistics\\StatisticsService\\StatisticsService.Api\\StatisticsService.Api.csproj": {
+              "projectPath": "F:\\code\\NewStatistics\\StatisticsService\\StatisticsService.Api\\StatisticsService.Api.csproj"
             }
           }
         }

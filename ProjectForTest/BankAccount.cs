@@ -1,8 +1,19 @@
-﻿namespace ProjectForTest;
+﻿using System.Data;
+
+namespace ProjectForTest;
 
 public class BankAccount
 {
     public int AgeCustomer { get; set; }
+    public string NameCustomer { get; set; }
+    public BankAccount()
+    {
+        
+    }
+    public BankAccount(double balance)
+    {
+        Balance = balance;
+    }
 
     public double Balance { get; set; }
 

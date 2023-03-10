@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YoDrO+FsHMwjNjVuvMTEUZOCnJTfj7ayikFZUGAkiArdr67oPUEqPlqK5AuDjv1jqoMPnzIYU+L9oOHKsAiHFQ==",
+  "dgSpecHash": "Wm9HmQI0DswxKtpendZQg/AVC7jAYOFd/oEnu5jga5RrfZZYMoNCkUFws0vfpmUqPkEJRl2tOipM81w+ENCOZA==",
   "success": true,
-  "projectFilePath": "F:\\code\\StatisticsService\\VersusDatabaseTest\\VersusDatabaseTest.csproj",
+  "projectFilePath": "F:\\code\\NewStatistics\\StatisticsService\\VersusDatabaseTest\\VersusDatabaseTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Family\\.nuget\\packages\\autobogus\\2.13.1\\autobogus.2.13.1.nupkg.sha512",
     "C:\\Users\\Family\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
