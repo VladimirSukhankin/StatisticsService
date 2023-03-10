@@ -18,7 +18,7 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(setupAction =>
 {
-    setupAction.SwaggerDoc("ApiSpecification", new OpenApiInfo()
+    setupAction.SwaggerDoc("ApiSpecification", new OpenApiInfo
     {
         Title = "API",
         Version = "1"
@@ -73,4 +73,7 @@ app.MapControllers();
 
 app.Run();
 
-public partial class Program { }
+/// <summary>
+/// Для реализации в тестах
+/// </summary>
+public abstract partial class Program { }

@@ -6,13 +6,13 @@ namespace TestProject;
 
 public class BanksTests
 {
-    public BankAccountBuilder BankAccountBuilder = new BankAccountBuilder();
+    private readonly BankAccountBuilder _bankAccountBuilder = new();
 
     [Fact]
     public void Debit_WithValid_Amount_NotUpdatesBalance()
     {
         //Arrange
-        var bankAccount = BankAccountBuilder
+        var bankAccount = _bankAccountBuilder
             .WithName("Pol")
             .WithStartBalance(0)
             .WithAge(20)
@@ -30,7 +30,7 @@ public class BanksTests
     public void Age_Less_Than_18()
     {
         //Arrange
-        var bankAccount = BankAccountBuilder
+        var bankAccount = _bankAccountBuilder
             .WithName("Pols")
             .WithStartBalance(1)
             .WithAge(17)
@@ -47,7 +47,7 @@ public class BanksTests
     public void Debit_WithInvalidValid_Amount_NotUpdatesBalance()
     {
         //Arrange
-        var bankAccount = BankAccountBuilder
+        var bankAccount = _bankAccountBuilder
             .WithName("Poli")
             .WithStartBalance(100)
             .WithAge(20)
@@ -65,7 +65,7 @@ public class BanksTests
     public void Debit_WithValid_Amount_UpdatesBalance()
     {
         //Arrange
-        var bankAccount = BankAccountBuilder
+        var bankAccount = _bankAccountBuilder
             .WithName("Poli")
             .WithStartBalance(100)
             .WithAge(20)
@@ -86,7 +86,7 @@ public class BanksTests
     public void Credit_WithValid_Amount_UpdatesBalance()
     {
         //Arrange
-        var bankAccount = BankAccountBuilder
+        var bankAccount = _bankAccountBuilder
             .WithName("Poli")
             .WithStartBalance(100)
             .WithAge(20)

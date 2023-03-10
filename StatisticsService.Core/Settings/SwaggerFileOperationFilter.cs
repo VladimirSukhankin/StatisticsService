@@ -26,7 +26,7 @@ public class SwaggerFileOperationFilter : IOperationFilter
                     Schema = new OpenApiSchema()
                     {
                         Type = "string",
-                        Format = "binary",
+                        Format = "binary"
                     },
                     In = ParameterLocation.Query,
                     Description = "Укажите путь к файлу и нажмите загрузить"

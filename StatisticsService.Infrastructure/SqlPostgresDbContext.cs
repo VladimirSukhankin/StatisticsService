@@ -18,5 +18,5 @@ public sealed class SqlPostgresDbContext : DbContext
             entity.HasKey(e => e.TransactionNumber);
         });
     }
-    public DbSet<TransactionSql> Transactions { get; set; }
+    public DbSet<TransactionSql> Transactions { get; set; } = null!;
 }

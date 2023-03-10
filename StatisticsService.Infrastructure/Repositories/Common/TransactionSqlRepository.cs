@@ -29,7 +29,6 @@ public class TransactionSqlRepository : ITransactionSqlRepository
 
     public async Task<bool> AddTransactions(IEnumerable<InputTransactionDto> transactions)
     {
-        long number = 0;
         try
         {
             var listTransaction = _mapper.Map<List<TransactionSql>>(transactions.ToList().DistinctBy(x=>x.TransactionNumber));
@@ -41,7 +40,6 @@ public class TransactionSqlRepository : ITransactionSqlRepository
         }
         catch (Exception ex)
         {
-            var s = number;
             Console.WriteLine(ex);
             throw;
         }
@@ -99,7 +97,7 @@ public class TransactionSqlRepository : ITransactionSqlRepository
         {
             return await _dbContext.Transactions
                 .GroupBy(x => x.PlaceName)
-                .Select(x => new ReportTransactionPlaceDto()
+                .Select(x => new ReportTransactionPlaceDto
                 {
                     PlaceName = x.Key,
                     CountTransaction = x.Count()
