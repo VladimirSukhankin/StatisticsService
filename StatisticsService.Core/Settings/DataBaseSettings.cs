@@ -6,17 +6,17 @@ public class DataBaseSettings
 
     public ushort Port { get; set; }
     
-    public string User { get; set; }
+    public string User { get; set; } = null!;
 
-    public string Password { get; set; }
+    public string Password { get; set; } = null!;
 
-    public string Database { get; set; }
-    
+    public string Database { get; set; } = null!;
+
     public bool Compress { get; set; }
 
     public bool CheckCompressedHash { get; set; }
 
     public long SocketTimeout { get; set; }
 
-    public string Compressor { get; set; }
+    public string Compressor { get; set; } = null!;
 }

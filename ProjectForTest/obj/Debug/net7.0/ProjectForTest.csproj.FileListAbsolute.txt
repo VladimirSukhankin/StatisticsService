@@ -1,0 +1,12 @@
+F:\code\NewStatistics\StatisticsService\ProjectForTest\bin\Debug\net7.0\ProjectForTest.deps.json
+F:\code\NewStatistics\StatisticsService\ProjectForTest\bin\Debug\net7.0\ProjectForTest.dll
+F:\code\NewStatistics\StatisticsService\ProjectForTest\bin\Debug\net7.0\ProjectForTest.pdb
+F:\code\NewStatistics\StatisticsService\ProjectForTest\obj\Debug\net7.0\ProjectForTest.csproj.AssemblyReference.cache
+F:\code\NewStatistics\StatisticsService\ProjectForTest\obj\Debug\net7.0\ProjectForTest.GeneratedMSBuildEditorConfig.editorconfig
+F:\code\NewStatistics\StatisticsService\ProjectForTest\obj\Debug\net7.0\ProjectForTest.AssemblyInfoInputs.cache
+F:\code\NewStatistics\StatisticsService\ProjectForTest\obj\Debug\net7.0\ProjectForTest.AssemblyInfo.cs
+F:\code\NewStatistics\StatisticsService\ProjectForTest\obj\Debug\net7.0\ProjectForTest.csproj.CoreCompileInputs.cache
+F:\code\NewStatistics\StatisticsService\ProjectForTest\obj\Debug\net7.0\ProjectForTest.dll
+F:\code\NewStatistics\StatisticsService\ProjectForTest\obj\Debug\net7.0\refint\ProjectForTest.dll
+F:\code\NewStatistics\StatisticsService\ProjectForTest\obj\Debug\net7.0\ProjectForTest.pdb
+F:\code\NewStatistics\StatisticsService\ProjectForTest\obj\Debug\net7.0\ref\ProjectForTest.dll

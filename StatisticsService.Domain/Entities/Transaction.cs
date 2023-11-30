@@ -12,103 +12,103 @@ public class Transaction:IEnumerable
     /// <summary>
     /// Наименование типа транзакции.
     /// </summary>
-    public string TransactionTypeName { get; set; }
+    public string? TransactionTypeName { get; set; }
 
     /// <summary>
     /// Наименование приложения.
     /// </summary>
-    public string ApplicationName { get; set; }
+    public string? ApplicationName { get; set; }
 
     /// <summary>
     /// Наименование места прохода.
     /// </summary>
-    public string PlaceName { get; set; }
+    public string? PlaceName { get; set; }
 
     /// <summary>
     /// Дата и время транзакции.
     /// </summary>
-    public string TransactionDate { get; set; }
+    public string? TransactionDate { get; set; }
 
     /// <summary>
     /// Серийный номер устройства.
     /// </summary>
-    public string DeviceSerialNumber { get; set; }
+    public string? DeviceSerialNumber { get; set; }
 
     /// <summary>
     /// Идентификатор контрагента.
     /// </summary>
-    public string AgentName { get; set; }
+    public string? AgentName { get; set; }
 
     /// <summary>
     /// Уникальный номер билета.
     /// </summary>
-    public string TicketGuid { get; set; }
+    public string? TicketGuid { get; set; }
 
     /// <summary>
     /// Транспортный номер карты.
     /// </summary>
-    public long CardNumber { get; set; }
+    public long? CardNumber { get; set; }
 
     /// <summary>
     /// Номер кристалла БСК.
     /// </summary>
-    public long CardSerialNumber { get; set; }
+    public long? CardSerialNumber { get; set; }
 
     /// <summary>
     /// Наименование продукта
     /// </summary>
-    public string ProductName { get; set; }
+    public string? ProductName { get; set; }
 
     /// <summary>
     /// Признак оформления билета в ЦОД (0 - нет, 1 - да).
     /// </summary>
-    public string IsOnline { get; set; }
+    public string? IsOnline { get; set; }
 
     /// <summary>
     /// Дата начала действия билета.
     /// </summary>
-    public string TicketDateBegin { get; set; }
-
-    /// <summary>
-    /// Дата окончания действия.
-    /// </summary>
-    public string TicketDateEnd { get; set; }
+    public string? TicketDateBegin { get; set; }
 
     /// <summary>
     /// Количество оставшихся проходов.
     /// </summary>
-    public int TicketRemainingTripsCounter { get; set; }
+    public string? TicketRemainingTripsCounter { get; set; }
 
     /// <summary>
     /// Количество пополнений карты.
     /// </summary>
-    public int CardRefillCounter { get; set; }
+    public string? CardRefillCounter { get; set; }
 
     /// <summary>
     /// Сумма остатка на карте.
     /// </summary>
-    public string CardBalance { get; set; }
+    public string? CardBalance { get; set; }
 
     /// <summary>
     /// Дата и время оформления билета.
     /// </summary>
-    public string TicketRegisterDate { get; set; }
+    public string? TicketRegisterDate { get; set; }
 
     /// <summary>
     /// Количество совершенных проходов.
     /// </summary>
-    public int CardUsageCounter { get; set; }
+    public string? CardUsageCounter { get; set; }
 
     /// <summary>
     /// Флаг продления (true - да, false - нет).
     /// </summary>
-    public string IsProlong { get; set; }
+    public string? IsProlong { get; set; }
 
     /// <summary>
     /// Стоимость прохода.
     /// </summary>
-    public string Price { get; set; }
-
+    public string? Price { get; set; }
+    
+    /// <summary>
+    /// Дата окончания действия.
+    /// </summary>
+    public string? TicketDateEnd { get; set; }
+    
     public IEnumerator GetEnumerator()
     {
         yield return TransactionNumber;

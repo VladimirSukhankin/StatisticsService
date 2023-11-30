@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "6D2JxsJAvgL9SVSmENhmmrVK5F7+6shuHAYv08kcY7YwnuhRsp3dIPWIRzVJGmOE1mrIfOganpzDpqdeIl6NWA==",
+  "success": true,
+  "projectFilePath": "F:\\code\\NewStatistics\\StatisticsService\\ProjectForTest\\ProjectForTest.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Family\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.13\\microsoft.netcore.app.ref.6.0.13.nupkg.sha512",
+    "C:\\Users\\Family\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.13\\microsoft.windowsdesktop.app.ref.6.0.13.nupkg.sha512",
+    "C:\\Users\\Family\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.13\\microsoft.aspnetcore.app.ref.6.0.13.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using AutoMapper;
+﻿using AutoMapper;
 using StatisticsService.Domain.Entities;
 using StatisticsService.Infrastructure.Dto;
 
@@ -10,60 +9,62 @@ public class TransactionProfile : Profile
     public TransactionProfile()
     {
         ValueTransformers.Add<string>(val => val ?? "");
-        
+
         CreateMap<TransactionDto, Transaction>()
-            .ForMember(t => t.IsOnline, o =>
-            {
-                o.MapFrom(e => (e.IsOnline != null && e.IsOnline.Value) ? "Y" : "N");
-            })
-            .ForMember(x => x.IsProlong, o =>
-            {
-                o.MapFrom(e => (e.IsProlong != null && e.IsProlong.Value) ? "Y" : "N");
-            })
-            .ReverseMap();
+            .ForMember(t => t.IsOnline, o => { o.MapFrom(e => e.IsOnline != null && e.IsOnline.Value ? "1" : "0"); })
+            .ForMember(x => x.IsProlong,
+                o => { o.MapFrom(e => e.IsProlong != null && e.IsProlong.Value ? "1" : "0"); });
 
-        CreateMap<InputTransactionDto, Transaction>()
-            .ForMember(t => t.IsOnline, o =>
-            {
-                o.MapFrom(e => (e.IsOnline != null && e.IsOnline.Value) ? "Y" : "N");
-            })
-            .ForMember(x => x.IsProlong, o =>
-            {
-                o.MapFrom(e => (e.IsProlong != null && e.IsProlong.Value) ? "Y" : "N");
-            });
+        CreateMap<TransactionDto, TransactionSql>()
+            .ForMember(t => t.IsOnline, o => { o.MapFrom(e => e.IsOnline != null && e.IsOnline.Value ? "1" : "0"); })
+            .ForMember(x => x.IsProlong,
+                o => { o.MapFrom(e => e.IsProlong != null && e.IsProlong.Value ? "1" : "0"); });
 
-        CreateMap<Transaction, InputTransactionDto>()
-            .ForMember(it => it.IsOnline, o =>
-            {
-                o.PreCondition(t => !string.IsNullOrEmpty(t.IsOnline));
-                o.MapFrom(t => t.IsOnline == "Y");
-            })
-            .ForMember(x => x.IsProlong, o =>
-            {
-                o.PreCondition(t => !string.IsNullOrEmpty(t.IsProlong));
-                o.MapFrom(t => t.IsProlong == "Y");
-            });
 
         CreateMap<Transaction, TransactionDto>()
             .ForMember(it => it.IsOnline, o =>
             {
                 o.PreCondition(t => !string.IsNullOrEmpty(t.IsOnline));
-                o.MapFrom(t => t.IsOnline == "Y");
+                o.MapFrom(t => t.IsOnline == "1");
             })
             .ForMember(x => x.IsProlong, o =>
             {
                 o.PreCondition(t => !string.IsNullOrEmpty(t.IsProlong));
-                o.MapFrom(t => t.IsProlong == "Y");
+                o.MapFrom(t => t.IsProlong == "1");
             })
-            .ForMember(t => t.CardBalance, o =>
+            .ForMember(x => x.CardRefillCounter, o => { o.MapFrom(t => ConvertToNullableInt(t.CardRefillCounter)); })
+            .ForMember(x => x.TicketRemainingTripsCounter,
+                o => { o.MapFrom(t => ConvertToNullableInt(t.TicketRemainingTripsCounter)); })
+            .ForMember(x => x.CardUsageCounter, o => { o.MapFrom(t => ConvertToNullableInt(t.CardUsageCounter)); });
+        ;
+
+        CreateMap<TransactionSql, TransactionDto>()
+            .ForMember(it => it.IsOnline, o =>
             {
-                o.PreCondition(e => !string.IsNullOrEmpty(e.CardBalance));
-                o.MapFrom(t => Decimal.Parse(t.CardBalance));
+                o.PreCondition(t => !string.IsNullOrEmpty(t.IsOnline));
+                o.MapFrom(t => t.IsOnline == "1");
             })
-            .ForMember(t => t.Price, o =>
+            .ForMember(x => x.IsProlong, o =>
             {
-                o.PreCondition(e => !string.IsNullOrEmpty(e.Price));
-                o.MapFrom(t => Decimal.Parse(t.Price));
+                o.PreCondition(t => !string.IsNullOrEmpty(t.IsProlong));
+                o.MapFrom(t => t.IsProlong == "1");
+            })
+            .ForMember(x => x.CardRefillCounter, o => { o.MapFrom(t => ConvertToNullableInt(t.CardRefillCounter)); })
+            .ForMember(x => x.TicketRemainingTripsCounter, 
+                o =>
+                {
+                    o.MapFrom(t => ConvertToNullableInt(t.TicketRemainingTripsCounter)); 
+                    
+                })
+            .ForMember(x => x.CardUsageCounter, o =>
+            {
+                o.MapFrom(t => ConvertToNullableInt(t.CardUsageCounter)); 
+                
             });
+
+        CreateMap<InputTransactionDto, Transaction>().ReverseMap();
+        CreateMap<InputTransactionDto, TransactionSql>().ReverseMap();
     }
+
+    private static int? ConvertToNullableInt(string? value) => int.TryParse(value, out var i) ? i : null;
 }
